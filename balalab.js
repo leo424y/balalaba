@@ -16,14 +16,15 @@ exports.helloWorld = (req, res) => {
     console.log(query.message);
     let result = query.message.split('');
     let final_result = '';
-    for (let i = 0; i < result.length; i+=2) {
-      if (getRandomInt(3) == 0) {
-      final_result += result[i+1] + result[i];
+    for (let i = 0; i < result.length-1; i+=2) {
+      if (getRandomInt(3) == 0 && (result[i+1] != undefined)) {
+        final_result += result[i+1] + result[i];
       }
       else {
         final_result += result[i] + result[i+1];
       }
     }
+    final_result += result[result.length-1];
     res.status(200).send('balalaba: ' + final_result);
   }
 };
